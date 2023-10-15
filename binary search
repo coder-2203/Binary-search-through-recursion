@@ -1,0 +1,46 @@
+bool binarysearch(int arr[],int s,int e,int key)
+{
+    int mid = s + (e-s)/2;
+    if(s>e)
+    {
+        return false;
+    }
+    if(arr[mid]==key)
+    {
+        return true;
+    }
+    if(arr[mid]<key)
+    {
+        return  binarysearch(arr,mid+1,e,key);
+    }
+    else
+    {
+        return binarysearch(arr,s,mid-1,key);
+
+    }
+}
+int main()
+{
+    int n,key,s,e;
+    cout << "Enter the size of array :" ;
+    cin >> n;
+    cout << "Enter the key :" ;
+    cin >> key;
+    s = 0;
+    e = n-1;
+    int *arr = new int[n];
+    for(int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    bool ans = binarysearch(arr,s,e,key);
+    if(ans)
+    {
+        cout << "Key is present in array " << endl;
+    }
+    else
+    {
+        cout << "Key is not present in array " << endl;
+    }
+    return 0;
+}
